@@ -15,3 +15,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "ComposeApp"
 include(":app")
+include(":module:greeting")
+project(":module:greeting").projectDir = File(rootDir, "../../module/greeting")
