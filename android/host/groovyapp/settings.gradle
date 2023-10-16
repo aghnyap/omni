@@ -1,0 +1,32 @@
+pluginManagement {
+    repositories {
+        google()
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
+
+String storageUrl = System.env.FLUTTER_STORAGE_BASE_URL ?: "https://storage.googleapis.com"
+
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+        maven {
+            url '/Users/aghny/Repositories/org/aghnyap/omni/flutter/module/wrapper/build/host/outputs/repo'
+        }
+        maven {
+            url "$storageUrl/download.flutter.io"
+        }
+    }
+}
+
+rootProject.name = "GroovyApp"
+include ':app'
+include ':module:greeting'
+project(':module:greeting').projectDir = new File(rootDir, "../../module/greeting")
+include ':module:bridge'
+project(':module:bridge').projectDir = new File(rootDir, "../../module/bridge")
+include ':module:platform'
+project(':module:platform').projectDir = new File(rootDir, "../../module/platform")
