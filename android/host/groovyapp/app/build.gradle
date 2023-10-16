@@ -2,7 +2,7 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'org.jetbrains.kotlin.kapt'
-    id 'com.google.dagger.hilt.android'
+    id 'dagger.hilt.android.plugin'
 }
 
 android {
@@ -25,6 +25,7 @@ android {
 
     buildTypes {
         debug {
+            minifyEnabled false
             applicationIdSuffix ".debug"
             versionNameSuffix "-debug"
         }
@@ -79,7 +80,7 @@ dependencies {
     implementation 'androidx.compose.material3:material3'
     implementation 'androidx.multidex:multidex:2.0.1'
     implementation 'com.google.dagger:hilt-android:2.48.1'
-    annotationProcessor 'com.google.dagger:hilt-compiler:2.48.1'
+    kapt 'com.google.dagger:hilt-compiler:2.48.1'
     testImplementation 'junit:junit:4.13.2'
     testImplementation 'com.google.dagger:hilt-android-testing:2.48.1'
     testAnnotationProcessor 'com.google.dagger:hilt-compiler:2.48.1'
@@ -100,3 +101,4 @@ kapt {
 hilt {
     enableAggregatingTask = true
 }
+

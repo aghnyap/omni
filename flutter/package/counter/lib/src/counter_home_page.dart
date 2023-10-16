@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
@@ -21,6 +22,30 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
+  static const platform = MethodChannel('org.aghnyap.omni.android.sharedprefs');
+
+  // Get value from SharedPreferences
+  Future<String?> getSharedPrefValue(String key) async {
+    try {
+      final String? result =
+          await platform.invokeMethod('getSharedPrefValue', {'key': key});
+      return result;
+    } on PlatformException catch (e) {
+      print("Failed to get value: '${e.message}'.");
+      return null;
+    }
+  }
+
+  // Set value to SharedPreferences
+  Future<void> setSharedPrefValue(String key, String value) async {
+    try {
+      await platform
+          .invokeMethod('setSharedPrefValue', {'key': key, 'value': value});
+    } on PlatformException catch (e) {
+      print("Failed to set value: '${e.message}'.");
+    }
+  }
+
   void _incrementCounter() {
     setState(() {
       // This call to setState tells the Flutter framework that something has
@@ -29,7 +54,18 @@ class _MyHomePageState extends State<MyHomePage> {
       // _counter without calling setState(), then the build method would not be
       // called again, and so nothing would appear to happen.
       _counter++;
+      setSharedPrefValue("counter", _counter.toString());
     });
+  }
+
+  @override
+  void initState() {
+    getSharedPrefValue("counter").then((value) {
+      setState(() {
+        _counter = (value != null ? int.parse(value) : null) ?? -1;
+      });
+    });
+    super.initState();
   }
 
   @override
