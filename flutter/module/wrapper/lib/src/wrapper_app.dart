@@ -1,8 +1,8 @@
 import 'package:counter/counter.dart';
 import 'package:flutter/material.dart';
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class WrapperApp extends StatelessWidget {
+  const WrapperApp({super.key});
 
   // This widget is the root of your application.
   @override
@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const CounterPage(title: 'Flutter Demo Home Page'),
     );
   }
 }

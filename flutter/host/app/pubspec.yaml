@@ -33,6 +33,10 @@ dependencies:
 
   counter:
     path: ../../package/counter
+  storage:
+    path: ../../package/storage
+  messenger:
+    path: ../../package/messenger
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.

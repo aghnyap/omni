@@ -30,6 +30,10 @@ dependencies:
   cupertino_icons: ^1.0.2
   counter:
     path: ../../package/counter
+  storage:
+    path: ../../package/storage
+  messenger:
+    path: ../../package/messenger
 
 dev_dependencies:
   flutter_test:

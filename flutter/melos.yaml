@@ -1,0 +1,16 @@
+name: flutter
+
+packages:
+  - host/**
+  - module/**
+  - package/**
+
+scripts:
+  analyze:
+    exec: fvm flutter analyze .
+  build:
+    exec: fvm flutter packages pub run build_runner build --delete-conflicting-outputs
+    packageFilters:
+      dependsOn: build_runner
+  get:
+    exec: fvm flutter pub get

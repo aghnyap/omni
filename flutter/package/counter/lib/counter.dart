@@ -1,3 +1,4 @@
 library counter;
 
-export 'src/counter_home_page.dart';
+export 'src/di/injector.dart';
+export 'src/counter/counter_page.dart';
